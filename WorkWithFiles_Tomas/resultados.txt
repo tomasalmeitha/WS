@@ -1,0 +1,1 @@
+leitura/palavras.txt contém 12 palavras
