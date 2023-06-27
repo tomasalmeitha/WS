@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Jun-2023 às 20:05
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Generation Time: Jun 20, 2023 at 12:48 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `nodepl06`
+-- Database: `nodepl06`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `clube`
+-- Table structure for table `clube`
 --
 
 CREATE TABLE `clube` (
@@ -33,7 +33,7 @@ CREATE TABLE `clube` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `clube`
+-- Dumping data for table `clube`
 --
 
 INSERT INTO `clube` (`Id`, `NomeClube`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `clube` (`Id`, `NomeClube`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `jogador`
+-- Table structure for table `jogador`
 --
 
 CREATE TABLE `jogador` (
@@ -54,7 +54,7 @@ CREATE TABLE `jogador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `jogador`
+-- Dumping data for table `jogador`
 --
 
 INSERT INTO `jogador` (`Id`, `NomeJogador`, `Clube`) VALUES
@@ -65,7 +65,7 @@ INSERT INTO `jogador` (`Id`, `NomeJogador`, `Clube`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `resultado`
+-- Table structure for table `resultado`
 --
 
 CREATE TABLE `resultado` (
@@ -76,33 +76,32 @@ CREATE TABLE `resultado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `resultado`
+-- Dumping data for table `resultado`
 --
 
 INSERT INTO `resultado` (`Id`, `HomeClub`, `AwayClub`, `Score`) VALUES
-(1, 1, 1, '1'),
-(2, 2, 3, '0'),
-(3, 1, 3, '1');
+(1, 2, 1, '1'),
+(2, 1, 2, '1');
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `clube`
+-- Indexes for table `clube`
 --
 ALTER TABLE `clube`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Índices para tabela `jogador`
+-- Indexes for table `jogador`
 --
 ALTER TABLE `jogador`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `Clube` (`Clube`);
 
 --
--- Índices para tabela `resultado`
+-- Indexes for table `resultado`
 --
 ALTER TABLE `resultado`
   ADD PRIMARY KEY (`Id`),
@@ -110,17 +109,17 @@ ALTER TABLE `resultado`
   ADD KEY `AwayClub` (`AwayClub`);
 
 --
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `jogador`
+-- Constraints for table `jogador`
 --
 ALTER TABLE `jogador`
   ADD CONSTRAINT `jogador_ibfk_1` FOREIGN KEY (`Clube`) REFERENCES `clube` (`Id`);
 
 --
--- Limitadores para a tabela `resultado`
+-- Constraints for table `resultado`
 --
 ALTER TABLE `resultado`
   ADD CONSTRAINT `resultado_ibfk_1` FOREIGN KEY (`HomeClub`) REFERENCES `clube` (`Id`),
