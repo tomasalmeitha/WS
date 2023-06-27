@@ -69,10 +69,60 @@ function NewArmazem(object, callback){
     });
 }
 
-function NewSell(object, callback){
-    
+function Sell(object, callback){
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "nodepl07"
+    });
+
+    con.connect(function (err) {
+        if (err) console.log(err);
+        console.log("Connected");
+
+        var sql = "Insert into Venda (Artigo, Quantidade, DataVenda) values (?)";
+        var convertedObject = [[object.ArtigoId, object.Quantidade, object.DataVenda]];
+
+        con.query(sql, convertedObject, function (err, result) {
+            if (err) {
+                console.log(err);
+                callback(err);
+            } else {
+                console.log("Rows inserted: " + result);
+                callback('OK');
+            }
+        });
+    });
+}
+
+function GetArmazem(id, callback){
+    var mysql = require('mysql');
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "nodepl07"
+    });
+
+    con.connect(function (err) {
+        if (err) console.log(err);
+        console.log("Connected");
+
+        var sql= "SELECT a.Descricao, (s.Unidades - IFNULL(SUM(v.Quantidade),0)) AS StockAtual FROM stock s LEFT JOIN venda v ON v.Artigo = s.Artigo Inner Join artigo a on a.Id = s.Artigo WHERE s.Armazem = ? GROUP BY s.Artigo;"
+        con.query(sql, id, function (err, result) {
+            if (err) {
+                console.log(err);
+                callback(err);
+            } else {
+                console.log("Rows inserted: " + result);
+                callback(result);
+            }
+        });
+    });
 }
 
 module.exports = {
-    NewArtigo, NewArmazem
+    NewArtigo, NewArmazem, Sell, GetArmazem
 }

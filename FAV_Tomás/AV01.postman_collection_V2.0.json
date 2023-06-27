@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "a4116e68-666b-4b50-85aa-8f6aa3f2dd72",
+		"name": "AV01",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27808214"
+	},
+	"item": [
+		{
+			"name": "New Warehouse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"Nome\": \"Armazem 01\",\r\n            \"Localidade\": \"Valongo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/warehouse/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"warehouse",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New IceCream",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"Descricao\": \"Calipo\",\r\n            \"Valor\": 1.10,\r\n            \"ArmazemId\": 1,\r\n            \"UnidadesInicial\": 90\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/icecream/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"icecream",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sell",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"GeladoId\": 8,\r\n            \"Quantidade\": 10,\r\n            \"DataVenda\": \"2023/03/20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/venda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"venda"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/armazem/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"armazem",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Top Sell",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/topsell",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"topsell"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -36,4 +36,28 @@ app.post("/artigo/new", (req, res) => {
     });
 });
 
+app.post("/venda", (req, res) => {
+    /*
+        {
+            "ArtigoId": 1,
+            "Quantidade": 10,
+            "DataVenda": 2023/06/22
+        }
+
+    */
+    mySql.Sell(req.body, function (result) {
+        console.log(result);
+        res.json(result);
+    });
+});
+
+app.get("/armazem/:id", (req, res) => {
+    var id = req.params.id;
+
+    mySql.GetArmazem(id, function (result) {
+        console.log(result);
+        res.json(result);
+    });
+});
+
 app.listen(3000);
